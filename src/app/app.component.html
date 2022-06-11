@@ -1,0 +1,35 @@
+<button (click)="toPdf()">export</button>
+<button (click)="onInsertTable()">Insert table</button>
+<div class="container">
+  <div id="quill-all" class="col" style="width:{{printSize.width}}mm;">
+    <div #container>
+      <!-- <quill-editor #editor [(ngModel)]="htmlText" placeholder="Enter Text" (onEditorCreated)="editorCreated($event)"
+        (onSelectionChanged)="onSelectionChanged($event)" (onContentChanged)="onContentChanged($event);pageBreak();">
+      </quill-editor> -->
+      <div #editable></div>
+      <div style="position:absolute;top:{{pBreak}}px;height:0px;width:100%;border:1px solid black;"
+        *ngFor="let pBreak of pBreaks"></div>
+    </div>
+    <div id="section-to-print" style="width:{{printSize.width}}mm;">
+      <div id="section-to-print2" class="ql-container ql-snow" style="width:{{printSize.width}}mm;">
+        <div class="ql-editor ">
+          <div [innerHTML]="InnerHTML"></div>
+        </div>
+      </div>
+      <!-- <quill-view-html [content]="htmlText" theme="snow"></quill-view-html> -->
+    </div>
+  </div>
+</div>
+<button (click)="setJson()">SetData</button>
+<json-editor #menu [options]="editorOptions" [data]="data" #editor></json-editor>
+<!-- <div>
+    <pre>{{htmlText}}</pre>
+  </div> -->
+
+<!-- <h2>Preview email will show the following</h2>
+Subject: {{subject}}
+<br />
+<br />
+Body:
+<div [innerHTML]="htmlText">
+</div> -->
